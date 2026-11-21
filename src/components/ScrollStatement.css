@@ -1,0 +1,19 @@
+/* ══ SCROLL STATEMENT ═════════════════════════════ */
+.scroll-statement {
+  padding: 120px 0;
+  position: relative;
+}
+
+.statement-text {
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.word {
+  display: inline;
+  transition: color 0.45s ease, opacity 0.45s ease;
+}

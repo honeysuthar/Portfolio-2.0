@@ -1,0 +1,186 @@
+/* ══ FOOTER ═══════════════════════════════════════ */
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 120px 0 36px;
+  /* no overflow:hidden here — the canvas reaches up into the section above */
+}
+
+/* Particle canvas: full width, starts 70vh ABOVE the footer so the
+   scattered triangles are already drifting over the previous section */
+.footer-field {
+  position: absolute;
+  left: 0;
+  top: -70vh;
+  width: 100%;
+  height: calc(100% + 70vh);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 3rem;
+  flex: 1;
+  margin-bottom: 64px;
+}
+
+/* ── Left column ── */
+.footer-copy-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #f5a623;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-title {
+  font-size: clamp(3.6rem, 9vw, 7.5rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--text-primary, #f4f4f8);
+  margin: 0 0 28px;
+}
+
+.footer-desc {
+  max-width: 460px;
+  margin: 0 0 40px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #a1a1b0);
+}
+
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  font-size: clamp(1.2rem, 2.4vw, 1.75rem);
+  font-weight: 400;
+  color: var(--text-primary, #f4f4f8);
+  word-break: break-all;
+  transition: color 0.2s;
+}
+.footer-email svg {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.footer-email:hover { color: var(--accent-purple-lt, #a48dff); }
+.footer-email:hover svg { transform: translate(3px, -3px); }
+
+/* ── Buttons ── */
+.footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.14));
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text-primary, #f4f4f8);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.footer-btn:hover {
+  border-color: var(--accent-purple, #7b5cfa);
+  transform: translateY(-2px);
+}
+.footer-btn--primary {
+  background: var(--accent-purple, #7b5cfa);
+  border-color: var(--accent-purple, #7b5cfa);
+  color: #fff;
+}
+.footer-btn--primary:hover {
+  background: var(--accent-purple-lt, #8f74ff);
+  border-color: var(--accent-purple-lt, #8f74ff);
+}
+.footer-btn:focus-visible,
+.footer-email:focus-visible,
+.footer-bottom a:focus-visible {
+  outline: 2px solid var(--accent-purple-lt, #a48dff);
+  outline-offset: 3px;
+}
+
+/* ── Anchor the brain assembles into (kept empty) ── */
+.footer-visual {
+  width: 100%;
+  aspect-ratio: 1 / 0.95;
+  max-height: 70vh;
+  justify-self: center;
+}
+
+/* ── Bottom bar ── */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #7a7a88);
+}
+.footer-bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+.footer-bottom a {
+  color: inherit;
+  transition: color 0.2s;
+}
+.footer-bottom a:hover { color: var(--text-primary, #f4f4f8); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .footer { padding: 90px 0 32px; }
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 48px;
+  }
+  .footer-visual {
+    max-width: 440px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-btn { padding: 12px 18px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}

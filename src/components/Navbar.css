@@ -1,0 +1,66 @@
+/* ══ NAVBAR ═══════════════════════════════════════ */
+.navbar-wrap {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 18px 0;
+  transition: background 0.35s, backdrop-filter 0.35s, border-color 0.35s;
+}
+.navbar-wrap.scrolled {
+  background: rgba(18,18,24,0.80);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+
+.nav-logo {
+  font-size: 1.05rem; font-weight: 800; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-primary); line-height: 1; flex-shrink: 0;
+}
+.nav-logo span { color: var(--accent-purple); }
+
+.nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+.nav-links a {
+  display: block; padding: 7px 14px;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-secondary); border-radius: 100px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--text-primary); background: rgba(243,242,248,0.07); }
+
+.nav-cta { flex-shrink: 0; }
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 6px; z-index: 1100;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--text-primary); border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.mobile-drawer.open { opacity: 1; pointer-events: all; }
+.mobile-drawer a {
+  font-size: 1.5rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-secondary); transition: color 0.2s;
+}
+.mobile-drawer a:hover { color: var(--text-primary); }
+.mobile-drawer .btn-outline { font-size: 0.85rem; margin-top: 1rem; }
+
+@media (max-width: 860px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
